@@ -34,9 +34,6 @@ def bug(x):
 
     return span
 
-if access_token is None or secret is None:
-    raise ValueError("請確認環境變數 LINE_CHANNEL_ACCESS_TOKEN 和 LINE_CHANNEL_SECRET 已設定")
-
 # 更新為使用 v3 模組（新的導入方式）
 from linebot import LineBotApi
 from linebot.v3.webhook import WebhookHandler
@@ -48,6 +45,9 @@ app = Flask(__name__)
 # 您的 LINE Channel 的 access token 和 secret
 access_token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN")
 secret = os.getenv("LINE_CHANNEL_SECRET")
+
+if access_token is None or secret is None:
+    raise ValueError("請確認環境變數 LINE_CHANNEL_ACCESS_TOKEN 和 LINE_CHANNEL_SECRET 已設定")
 
 # 實例化 LineBotApi 和 WebhookHandler
 line_bot_api = LineBotApi(access_token)
