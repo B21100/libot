@@ -55,18 +55,24 @@ handler = WebhookHandler(secret)
 
 @app.route("/", methods=['POST'])
 def linebot():
+    # 預先抓取中獎號碼，避免每次都重新請求
+    award_a = bug(0)
+    award_b = bug(1)
+    award_c = bug(2)
+    award_d = bug(3)
+    award_e = bug(4)
     body = request.get_data(as_text=True)  # 取得原始的 webhook 資料
     signature = request.headers['X-Line-Signature']  # 取得簽名
 
-    a=bug(0)
+    a=award_a
 
-    b=bug(1)
+    b=award_b
 
-    c=bug(2)
+    c=award_c
 
-    d=bug(3)
+    d=award_d
 
-    e=bug(4)
+    e=award_e
 
     try:
         # 驗證簽名並處理事件
@@ -119,7 +125,7 @@ def linebot():
         print(f"Error: {e}")
         return 'Internal Server Error', 500
 
-    return 'OK'
+    return 'OK', 200
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
