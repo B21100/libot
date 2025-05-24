@@ -24,6 +24,12 @@ def bug(x):
     tan = soup.find('p', class_="etw-tbiggest mb-md-4")
     tanb = tan.find_next_siblings()
 
+    print(ta[0].get_text())
+    print(ta[1].get_text())
+    print(tan.get_text()[-8:])
+    print(tanb[0].get_text()[-8:])
+    print(tanb[1].get_text()[-8:])
+
     if x == 0:
         span = ta[0].get_text()
     elif x == 1:
