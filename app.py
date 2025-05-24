@@ -2,6 +2,7 @@ from flask import Flask, request
 from bs4 import BeautifulSoup
 import requests
 import json
+import os
 
 def bug(x):
     span = 0
