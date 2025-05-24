@@ -34,6 +34,9 @@ def bug(x):
 
     return span
 
+if access_token is None or secret is None:
+    raise ValueError("請確認環境變數 LINE_CHANNEL_ACCESS_TOKEN 和 LINE_CHANNEL_SECRET 已設定")
+
 # 更新為使用 v3 模組（新的導入方式）
 from linebot import LineBotApi
 from linebot.v3.webhook import WebhookHandler
